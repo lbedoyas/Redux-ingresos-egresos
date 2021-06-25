@@ -26,9 +26,6 @@ export class LoginComponent implements OnInit, OnDestroy {
               private router: Router,
               private store: Store<AppState> ) { }
 
-
-
-
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -38,8 +35,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.uiSubscriptions = this.store.select('ui').subscribe((ui) => {
       ui.isLoading
       this.cargando = ui.isLoading;
-      console.log(this.cargando);
-      console.log('cargando');
+      // console.log(this.cargando);
+      // console.log('cargando');
     })
   }
 
@@ -67,7 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .then( credenciales => {
         console.log(credenciales);
        // Swal.close();
-       console.log(ui.stopLoading());
+        console.log(ui.stopLoading());
 
         this.store.dispatch(ui.stopLoading());
         this.router.navigate(['/']);
