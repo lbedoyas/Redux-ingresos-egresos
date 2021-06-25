@@ -23,13 +23,11 @@ export class AuthService  {
               private store: Store<AppState>) { }
 
   initAuthListener() {
-
     this.auth.authState.subscribe( fuser => {
       //console.log( fuser );
       console.log( fuser );
       //console.log( fuser?.email );
       if (fuser) {
-
         this.userSubscripcion = this.firestore.doc(`${fuser.uid}/usuario`)
         .valueChanges().subscribe(
           (fireStoreUser: any) =>{
@@ -43,9 +41,7 @@ export class AuthService  {
         this.store.dispatch(authActions.unSetUser());
       }
     })
-
   }
-
 
 
   crearUsuario( nombre:string, email: string, password: string ) {
